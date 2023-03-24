@@ -10,13 +10,13 @@ class TeamScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    F1Provider providerDriver = Provider.of<F1Provider>(context);
+    F1Provider providerTeam = Provider.of<F1Provider>(context);
     
-    final args = ModalRoute.of(context)!.settings.arguments as WidgetArguments;
+    final args = ModalRoute.of(context)!.settings.arguments as WidgetArguments2;
     final name = args.name.toLowerCase().replaceAll(' ', '');
 
     return FutureBuilder(
-      future: providerDriver.getDriver(name),
+      future: providerTeam.getTeam(name),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
@@ -75,7 +75,7 @@ class TeamScreen extends StatelessWidget {
                                 width: 30, 
                               ),
                               Text(
-                                providerDriver.currentDriver!.team!,
+                                (providerTeam.currentTeam?.points).toString(),
                                 style: const TextStyle(
                                   fontFamily: 'F1R', color: Colors.white, fontSize: 20
                                 ),
@@ -87,7 +87,11 @@ class TeamScreen extends StatelessWidget {
                       const SizedBox(
                         width: 30,
                       ),
-                      Image.asset('assets/${args.firstName}.png'),
+                      SizedBox(
+                        width: 150,
+                        height: 150,
+                        child: Image.asset('assets/$name.jpeg')
+                      ),
                     ]
                   ),
                 ),
@@ -114,12 +118,28 @@ class TeamScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     TeamDetails(
-                                      title: 'Points',
-                                      datail: providerDriver.currentDriver!.points!
+                                      title: 'Team Chief',
+                                      datail: providerTeam.currentTeam!.teamChief!
                                     ),
+                                    TeamDetails(
+                                      title: 'Technical Chief',
+                                      datail: providerTeam.currentTeam!.technicalChief!
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 25,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
                                     TeamDetails(
                                       title: 'World Championships',
-                                      datail: providerDriver.currentDriver!.worldChampionships!
+                                      datail: providerTeam.currentTeam!.worldChampionships!
+                                    ),
+                                    TeamDetails(
+                                      title: 'Pole Positions',
+                                      datail: providerTeam.currentTeam!.polePositions!
                                     ),
                                   ],
                                 ),
@@ -130,28 +150,12 @@ class TeamScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     TeamDetails(
-                                      title: 'Podiums',
-                                      datail: providerDriver.currentDriver!.podiums!
+                                      title: 'Chassis',
+                                      datail: providerTeam.currentTeam!.chassis!
                                     ),
                                     TeamDetails(
-                                      title: 'Races',
-                                      datail: providerDriver.currentDriver!.grandsPrixEntered!
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 25,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    TeamDetails(
-                                      title: 'Country',
-                                      datail: providerDriver.currentDriver!.country!
-                                    ),
-                                    TeamDetails(
-                                      title: 'Date of Birth',
-                                      datail: providerDriver.currentDriver!.dateOfBirth!
+                                      title: 'Power unit',
+                                      datail: providerTeam.currentTeam!.powerUnit!
                                     ),
                                   ],
                                 ),
@@ -173,30 +177,15 @@ class TeamScreen extends StatelessWidget {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(25.0),
-                              child: Column(
-                                children: const [
-                                  Text(
-                                    'Biography', 
-                                    style: TextStyle(
-                                    fontFamily: 'F1B', color: Colors.black
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 25,
-                                  ),
-                                Text('Velit veniam anim commodo minim sit tempor reprehenderit eu pariatur id ut. Consequat consequat pariatur ea in fugiat in enim pariatur non culpa consectetur. Culpa pariatur deserunt elit do cillum esse anim. Esse proident fugiat dolore ut non dolor deserunt labore non sit in nostrud ipsum fugiat. Esse ipsum excepteur exercitation enim sit minim consectetur velit sit voluptate duis duis Lorem. \n\nEsse elit qui magna in exercitation. Sint ullamco mollit adipisicing non dolor non Lorem veniam. Pariatur fugiat esse ullamco aliqua Lorem ad voluptate commodo aute. Ad culpa eu ullamco Lorem eiusmod ea exercitation laboris. Nisi ea in irure deserunt ut aute duis sunt sint enim officia. Minim aute labore non irure labore cillum.Enim consequat non ea culpa id magna esse laboris dolor eiusmod. Fugiat et in ad ea pariatur officia magna et ea dolore qui dolore duis. Minim cupidatat ad sint proident laboris amet. Veniam et sunt et Lorem velit voluptate anim non pariatur non dolor fugiat consectetur officia. Qui sit veniam amet proident ullamco cillum occaecat culpa ad. In cillum ut dolore fugiat.',
-                                  textAlign: TextAlign.justify,),
-                                Text('Velit veniam anim commodo minim sit tempor reprehenderit eu pariatur id ut. Consequat consequat pariatur ea in fugiat in enim pariatur non culpa consectetur. Culpa pariatur deserunt elit do cillum esse anim. Esse proident fugiat dolore ut non dolor deserunt labore non sit in nostrud ipsum fugiat. Esse ipsum excepteur exercitation enim sit minim consectetur velit sit voluptate duis duis Lorem. \n\nEsse elit qui magna in exercitation. Sint ullamco mollit adipisicing non dolor non Lorem veniam. Pariatur fugiat esse ullamco aliqua Lorem ad voluptate commodo aute. Ad culpa eu ullamco Lorem eiusmod ea exercitation laboris. Nisi ea in irure deserunt ut aute duis sunt sint enim officia. Minim aute labore non irure labore cillum.Enim consequat non ea culpa id magna esse laboris dolor eiusmod. Fugiat et in ad ea pariatur officia magna et ea dolore qui dolore duis. Minim cupidatat ad sint proident laboris amet. Veniam et sunt et Lorem velit voluptate anim non pariatur non dolor fugiat consectetur officia. Qui sit veniam amet proident ullamco cillum occaecat culpa ad. In cillum ut dolore fugiat.',
-                                  textAlign: TextAlign.justify,),
-                                  
-                            
+                              child: Row(
+                                children: [
+                                  Card(
+                                    child: Image.asset('assets/${providerTeam.currentTeam!.drivers![0]['firstname']}.png'.replaceAll(' ', ''))
+                                  )
                                 ],
-                              ),
+                              )
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 25,
                         ),
                       ],
                     ),

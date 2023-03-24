@@ -110,10 +110,10 @@ class TeamCard extends StatelessWidget {
             GestureDetector(
               //TODO: CAMBIAR
               onTap: () {
-                // Navigator.pushNamed(
-                //   context, menuOptions[0].route,
-                //   arguments: WidgetArguments2(index, '${team.teamName}', team.rank!['standing']!.toString())
-                // );
+                Navigator.pushNamed(
+                  context, menuOptions[1].route,
+                  arguments: WidgetArguments2(index, '${team.teamName}', team.rank!['standing']!.toString())
+                );
               },
               child: Card(
                 shape: const RoundedRectangleBorder(
