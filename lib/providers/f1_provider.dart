@@ -7,6 +7,7 @@ class F1Provider extends ChangeNotifier {
   List<DriversResult> drivers = [];
   DriverResult? currentDriver;
   List<TeamsResult> teams = [];
+  TeamResult? currentTeam;
 
   Future<bool> getDriver(String driverName) async {
     final response = await Api.httpGet('/api/drivers/details/$driverName');
@@ -262,14 +263,14 @@ class F1Provider extends ChangeNotifier {
             final teamsList = content;
 
             if (teamsList != null && teamsList.isNotEmpty) {
-              for (final driverData in teamsList) {
-                if (driverData is Map<String, dynamic>) {
-                  final driverJson = driverData;
+              for (final teamData in teamsList) {
+                if (teamData is Map<String, dynamic>) {
+                  final driverJson = teamData;
 
                   final instance = TeamsResult(
                     rank: driverJson['rank'],
                     points: driverJson['points'],
-                    teamName: driverJson['firstname'],
+                    teamName: driverJson['teamName'],
                     drivers: driverJson['drivers'],
                   );
 
@@ -278,6 +279,51 @@ class F1Provider extends ChangeNotifier {
               }
             }
           }
+        }
+      }
+    }
+    return true;
+  }
+
+  Future<bool> getTeam(String teamName) async {
+    if(teamName == 'redbullracing'){
+      teamName = 'redbull';
+    }
+    else{
+      if(teamName == 'hassf1team') {
+        teamName = 'haas';
+      }
+    }
+
+    final response = await Api.httpGet('/api/teams/details/$teamName');
+
+    if (response.data != null) {
+      final data = response.data;
+
+      if (data.containsKey('teamDetails')) {
+        final content = data['teamDetails'];
+
+        if (content is Map<String, dynamic>?) {
+          final driverJson = content;
+
+          final instance = TeamResult(
+            basee: driverJson?['base'],
+            teamChief: driverJson?['teamChief'],
+            chassis: driverJson?['chassis'],
+            points: driverJson?['points'],
+            powerUnit: driverJson?['powerUnit'],
+            worldChampionships: driverJson?['worldChampionships'],
+            highestRaceFinish: driverJson?['highestRaceFinish'],
+            firstTeamEntry: driverJson?['firstTeamEntry'],
+            polePositions: driverJson?['polePositions'],
+            fastestLaps: driverJson?['fastestLaps'],
+            teamName: driverJson?['teamName'],
+            drivers: driverJson?['drivers'],
+            rank: driverJson?['rank'],
+            technicalChief: driverJson?['technicalChief'],
+          );
+
+          currentTeam = instance;
         }
       }
     }

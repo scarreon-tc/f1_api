@@ -96,6 +96,39 @@ flutter:
      - assets/Nyck.png
      - assets/Oscar.png
      - assets/Lando.png
+     - assets/Perez.png
+     - assets/Verstappen.png
+     - assets/Stroll.png
+     - assets/Alonso.png
+     - assets/Hamilton.png
+     - assets/Russell.png
+     - assets/Leclerc.png
+     - assets/Sainz.png
+     - assets/Gasly.png
+     - assets/Ocon.png
+     - assets/Bottas.png
+     - assets/Zhou.png
+     - assets/Hulkenberg.png
+     - assets/Magnussen.png
+     - assets/Sargeant.png
+     - assets/Albon.png
+     - assets/Tsunoda.png
+     - assets/DeVries.png
+     - assets/Norris.png
+     - assets/Piastri.png
+     - assets/redbullracing.jpeg
+     - assets/alpine.jpeg
+     - assets/alfaromeo.jpeg
+     - assets/haasf1team.jpeg
+     - assets/williams.jpeg
+     - assets/alphatauri.jpeg
+     - assets/mclaren.jpeg
+     - assets/ferrari.jpeg
+     - assets/mercedes.jpeg
+     - assets/astonmartin.jpeg
+     
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

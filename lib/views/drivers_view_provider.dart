@@ -139,7 +139,7 @@ class CarDriver extends StatelessWidget {
                               ),
                               Container(
                                 height: 40,
-                                width: 6,
+                                width: 4,
                                 color: Colors.white,
                               ),
                             ],

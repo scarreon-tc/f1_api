@@ -27,4 +27,10 @@ void main() {
 
     print(teams![0].rank!['standing']);
   });
+
+    test('Get team',() async{
+    final TeamResult? team = await api.getTeam('redbull');
+
+    print(team!.teamName);
+  });
 }

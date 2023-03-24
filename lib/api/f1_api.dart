@@ -35,8 +35,8 @@ class F1Api {
     if (response.data != null) {
       final data = response.data;
 
-      if (data?.containsKey('driverDetails') ?? false) {
-        final content = data?['driverDetails'];
+      if (data?.containsKey('teamDetails') ?? false) {
+        final content = data?['teamDetails'];
 
         if (content is Map<String, dynamic>?) {
 
@@ -141,5 +141,51 @@ class F1Api {
       }
     }
     return null;
+  }
+
+  Future<TeamResult?> getTeam(String teamName) async {
+
+    if(teamName == 'redbullracing'){
+      teamName = 'redbull';
+    }
+    else{
+      if(teamName == 'hassf1team') {
+        teamName = 'haas';
+      }
+    }
+
+    final response = await dio.get<Map<String, dynamic>>('/api/teams/details/$teamName');
+    late TeamResult result;
+
+    if (response.data != null) {
+      final data = response.data;
+
+      if (data?.containsKey('teamDetails') ?? false) {
+        final content = data?['teamDetails'];
+
+        if (content is Map<String, dynamic>?) {
+          final driverJson = content;
+
+          final instance = TeamResult(
+            basee: driverJson?['base'],
+            teamChief: driverJson?['teamChief'],
+            chassis: driverJson?['chassis'],
+            points: driverJson?['points'],
+            powerUnit: driverJson?['powerUnit'],
+            worldChampionships: driverJson?['worldChampionships'],
+            highestRaceFinish: driverJson?['highestRaceFinish'],
+            firstTeamEntry: driverJson?['firstTeamEntry'],
+            polePositions: driverJson?['polePositions'],
+            fastestLaps: driverJson?['fastestLaps'],
+            teamName: driverJson?['teamName'],
+            drivers: driverJson?['drivers'],
+            rank: driverJson?['rank'],
+            technicalChief: driverJson?['technicalChief'],
+          );
+          result = instance;
+        }
+      }
+    }
+    return result;
   }
 }

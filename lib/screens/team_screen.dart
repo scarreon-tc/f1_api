@@ -5,19 +5,18 @@ import 'package:provider/provider.dart';
 import '../models/models.dart';
 import '../providers/f1_provider.dart';
 
-class DriverScreen extends StatelessWidget {
-  const DriverScreen({super.key});
+class TeamScreen extends StatelessWidget {
+  const TeamScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    F1Provider providerTeam = Provider.of<F1Provider>(context);
+    F1Provider providerDriver = Provider.of<F1Provider>(context);
     
-    final args = ModalRoute.of(context)!.settings.arguments as WidgetArguments2;
+    final args = ModalRoute.of(context)!.settings.arguments as WidgetArguments;
     final name = args.name.toLowerCase().replaceAll(' ', '');
 
     return FutureBuilder(
-      //TODO: CAMBIAR
-      future: providerTeam.getDriver(name),
+      future: providerDriver.getDriver(name),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
@@ -76,8 +75,7 @@ class DriverScreen extends StatelessWidget {
                                 width: 30, 
                               ),
                               Text(
-                                // TODO:CAMBIAR 
-                                providerTeam.currentDriver!.team!,
+                                providerDriver.currentDriver!.team!,
                                 style: const TextStyle(
                                   fontFamily: 'F1R', color: Colors.white, fontSize: 20
                                 ),
@@ -89,7 +87,7 @@ class DriverScreen extends StatelessWidget {
                       const SizedBox(
                         width: 30,
                       ),
-                      Image.asset('assets/${args.name}.png'),
+                      Image.asset('assets/${args.firstName}.png'),
                     ]
                   ),
                 ),
@@ -115,14 +113,13 @@ class DriverScreen extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    //TODO: CAMBIAR TODO ESTO 
-                                    DriverDetails(
+                                    TeamDetails(
                                       title: 'Points',
-                                      datail: providerTeam.currentDriver!.points!
+                                      datail: providerDriver.currentDriver!.points!
                                     ),
-                                    DriverDetails(
+                                    TeamDetails(
                                       title: 'World Championships',
-                                      datail: providerTeam.currentDriver!.worldChampionships!
+                                      datail: providerDriver.currentDriver!.worldChampionships!
                                     ),
                                   ],
                                 ),
@@ -132,13 +129,13 @@ class DriverScreen extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    DriverDetails(
+                                    TeamDetails(
                                       title: 'Podiums',
-                                      datail: providerTeam.currentDriver!.podiums!
+                                      datail: providerDriver.currentDriver!.podiums!
                                     ),
-                                    DriverDetails(
+                                    TeamDetails(
                                       title: 'Races',
-                                      datail: providerTeam.currentDriver!.grandsPrixEntered!
+                                      datail: providerDriver.currentDriver!.grandsPrixEntered!
                                     ),
                                   ],
                                 ),
@@ -148,13 +145,13 @@ class DriverScreen extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    DriverDetails(
+                                    TeamDetails(
                                       title: 'Country',
-                                      datail: providerTeam.currentDriver!.country!
+                                      datail: providerDriver.currentDriver!.country!
                                     ),
-                                    DriverDetails(
+                                    TeamDetails(
                                       title: 'Date of Birth',
-                                      datail: providerTeam.currentDriver!.dateOfBirth!
+                                      datail: providerDriver.currentDriver!.dateOfBirth!
                                     ),
                                   ],
                                 ),
@@ -214,8 +211,8 @@ class DriverScreen extends StatelessWidget {
   }
 }
 
-class DriverDetails extends StatelessWidget {
-  const DriverDetails({super.key, required this.title, required this.datail});
+class TeamDetails extends StatelessWidget {
+  const TeamDetails({super.key, required this.title, required this.datail});
 
   final String title;
   final String datail;

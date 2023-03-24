@@ -9,7 +9,7 @@ class AppRoutes{
 
   static final menuOptions = <MenuOption>[
     MenuOption(route: 'Driver', icon: Icons.app_shortcut_rounded, name: 'Driver', screen: const DriverScreen()),
-    //MenuOption(route: 'races', icon: Icons.list_alt_rounded, name: 'Races', screen: const RacesScreen()),
+    MenuOption(route: 'Team', icon: Icons.list_alt_rounded, name: 'Team', screen: const TeamScreen()),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes(){
