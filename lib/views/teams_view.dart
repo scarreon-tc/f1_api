@@ -1,5 +1,6 @@
 
 import 'package:f1_api/providers/f1_provider.dart';
+import 'package:f1_api/themes/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -144,7 +145,7 @@ class TeamCard extends StatelessWidget {
                             Container(
                               height: 60,
                               width: 4,
-                              color: Colors.white,
+                              color: AppTheme.primaryColor,
                             ),
                           ],
                         ),
@@ -228,7 +229,7 @@ class TeamCard extends StatelessWidget {
                                     child: Text(
                                       '${team.points!['pts']} pts',
                                       style: const TextStyle(
-                                        fontFamily: 'F1R', color: Colors.black, fontSize: 10,
+                                        fontFamily: 'F1B', color: Colors.black, fontSize: 10,
                                       ),
                                     ),
                                   ),

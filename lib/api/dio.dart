@@ -6,7 +6,7 @@ class Api {
   static void configureDio() {
     ///Base url
     _dio.options.baseUrl = 'https://fia-formula-1-championship-statistics.p.rapidapi.com';
-    _dio.options.headers['X-RapidAPI-Key'] = '556adc7937mshe49ff6747a44e12p19818bjsna1de7d06d378';
+    _dio.options.headers['X-RapidAPI-Key'] = 'ad0474a17cmsh8434c481c1a8b79p1d25b9jsn0e6d3ad825a2';
     _dio.options.headers['X-RapidAPI-Host'] = 'fia-formula-1-championship-statistics.p.rapidapi.com';
 
 

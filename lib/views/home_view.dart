@@ -8,7 +8,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: const Center(
-        child: Text('Actual race'),
+        child: Text('Actual gaby'),
       ),
     );
   }

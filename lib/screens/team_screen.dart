@@ -1,4 +1,5 @@
 import 'package:f1_api/constants.dart';
+import 'package:f1_api/themes/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +27,7 @@ class TeamScreen extends StatelessWidget {
               backgroundColor: Colors.black,
               centerTitle: true,
               title: const Text(
-                'Driver',
+                'Team',
                 style: TextStyle(fontFamily: 'F1', color: Colors.white),
               )
             ),
@@ -36,7 +37,7 @@ class TeamScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 150,
                   decoration: const BoxDecoration(
-                    color: Colors.black26,
+                    color: AppTheme.primaryColor,
                     borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(kDefaultPadding * 2),
                       bottomLeft: Radius.circular(kDefaultPadding * 2),
@@ -96,7 +97,7 @@ class TeamScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 15,
                 ),
                 Expanded(
                   child: SingleChildScrollView(
@@ -167,25 +168,107 @@ class TeamScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          height: 25,
+                          height: 15,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 25),
                           child: Card(
+                            color: const Color.fromARGB(255, 254, 252, 252),
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(20))
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(25.0),
-                              child: Row(
-                                children: [
-                                  Card(
-                                    child: Image.asset('assets/${providerTeam.currentTeam!.drivers![0]['firstname']}.png'.replaceAll(' ', ''))
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  'Drivers',
+                                  style: TextStyle(
+                                    fontFamily: 'F1B', color: Colors.black, fontSize: 18
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Card(
+                                        color: Colors.black87,
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(20))
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Column(
+                                            children: [
+                                              Image.asset('assets/${providerTeam.currentTeam!.drivers![0]['firstname']}.png'.replaceAll(' ', '')),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              Text(
+                                                providerTeam.currentTeam!.drivers![0]['firstname'],
+                                                style: const TextStyle(
+                                                  fontFamily: 'F1B', color: Colors.white, fontSize: 18
+                                                ),
+                                              ),
+                                              Text(
+                                                providerTeam.currentTeam!.drivers![0]['lastname'],
+                                                style: const TextStyle(
+                                                  fontFamily: 'F1', color: Colors.white, fontSize: 15
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 15,
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ),
+                                      // const SizedBox(
+                                      //   width: 50,
+                                      // ),
+                                      Card(
+                                        color: Colors.black87,
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(20))
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Column(
+                                            children: [
+                                              Image.asset('assets/${providerTeam.currentTeam!.drivers![1]['firstname']}.png'.replaceAll(' ', '')),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              Text(
+                                                providerTeam.currentTeam!.drivers![1]['firstname'],
+                                                style: const TextStyle(
+                                                  fontFamily: 'F1B', color: Colors.white, fontSize: 18
+                                                ),
+                                              ),
+                                              Text(
+                                                providerTeam.currentTeam!.drivers![1]['lastname'],
+                                                style: const TextStyle(
+                                                  fontFamily: 'F1', color: Colors.white, fontSize: 15
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 15,
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      )
+                                    ],
                                   )
-                                ],
-                              )
+                                ),
+                              ],
                             ),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 15,
                         ),
                       ],
                     ),
@@ -236,7 +319,7 @@ class TeamDetails extends StatelessWidget {
                   Text(
                     datail,
                     style: const TextStyle(
-                      fontFamily: 'F1R', color: Colors.black87
+                      fontFamily: 'F1R', color: Colors.black
                     ),
                   ),
                   // SizedBox(
