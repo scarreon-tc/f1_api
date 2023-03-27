@@ -73,63 +73,77 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/logo-F1.png
-     - assets/loading.gif
-     - assets/Formula1-Wide_web_0.ttf
-     - assets/Max.png
-     - assets/Sergio.png
-     - assets/Charles.png
-     - assets/Fernando.png
-     - assets/Carlos.png
-     - assets/Lewis.png
-     - assets/George.png
-     - assets/Lance.png
-     - assets/Valtteri.png
-     - assets/Esteban.png
-     - assets/Pierre.png
-     - assets/Kevin.png
-     - assets/Alexander.png
-     - assets/Yuki.png
-     - assets/Nico.png
-     - assets/Logan.png
-     - assets/Guanyu.png
-     - assets/Nyck.png
-     - assets/Oscar.png
-     - assets/Lando.png
-     - assets/Perez.png
-     - assets/Verstappen.png
-     - assets/Stroll.png
-     - assets/Alonso.png
-     - assets/Hamilton.png
-     - assets/Russell.png
-     - assets/Leclerc.png
-     - assets/Sainz.png
-     - assets/Gasly.png
-     - assets/Ocon.png
-     - assets/Bottas.png
-     - assets/Zhou.png
-     - assets/Hulkenberg.png
-     - assets/Magnussen.png
-     - assets/Sargeant.png
      - assets/Albon.png
-     - assets/Tsunoda.png
-     - assets/DeVries.png
-     - assets/Norris.png
-     - assets/Piastri.png
-     - assets/redbullracing.jpeg
-     - assets/alpine.jpeg
+     - assets/Alexander.png
      - assets/alfaromeo.jpeg
-     - assets/haasf1team.jpeg
-     - assets/williams.jpeg
+     - assets/Alonso.png
      - assets/alphatauri.jpeg
-     - assets/mclaren.jpeg
-     - assets/ferrari.jpeg
-     - assets/mercedes.jpeg
+     - assets/alpine.jpeg
      - assets/astonmartin.jpeg
+     - assets/astonmartin2.jpeg
+     - assets/Bottas.png
+     - assets/Carlos.png
+     - assets/Charles.png
+     - assets/DeVries.png
+     - assets/Esteban.png
+     - assets/Fernando.png
+     - assets/ferrari.jpeg
+     - assets/ferrari2.jpeg
+     - assets/Formula1-Bold_web_0.ttf
+     - assets/Formula1-Regular_web_0.ttf
+     - assets/Formula1-Wide_web_0.ttf
+     - assets/Gasly.png
+     - assets/George.png
+     - assets/Guanyu.png
+     - assets/haasf1team.jpeg
+     - assets/Hamilton.png
+     - assets/Hulkenberg.png
+     - assets/Kevin.png
+     - assets/Lance.png
+     - assets/Lando.png
+     - assets/Leclerc.png
+     - assets/Lewis.png
+     - assets/loading.gif
+     - assets/Logan.png
+     - assets/logo-F1.png
+     - assets/Magnussen.png
+     - assets/Max.png
+     - assets/mclaren.jpeg
+     - assets/mercedes.jpeg
+     - assets/mercedes2.jpeg
+     - assets/Nico.png
+     - assets/Norris.png
+     - assets/Nyck.png
+     - assets/Ocon.png
+     - assets/Oscar.png
+     - assets/Perez.png
+     - assets/Piastri.png
+     - assets/Pierre.png
+     - assets/redbullracing.jpeg
+     - assets/redbullracing2.jpeg
+     - assets/Russell.png
+     - assets/Sainz.png
+     - assets/Sargeant.png
+     - assets/Sergio.png
+     - assets/Stroll.png
+     - assets/Tsunoda.png
+     - assets/Valtteri.png
+     - assets/Verstappen.png
+     - assets/williams.jpeg
+     - assets/Yuki.png
+     - assets/Zhou.png
+     - assets/alpine2.jpeg
+     - assets/alfaromeo2.jpeg
+     - assets/haasf1team2.jpeg
+     - assets/williams2.jpeg
+     - assets/alphatauri2.jpeg
+     - assets/mclaren2.jpeg
+
+
+
+
+
      
-
-
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

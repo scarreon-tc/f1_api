@@ -29,8 +29,8 @@ void main() {
   });
 
     test('Get team',() async{
-    final TeamResult? team = await api.getTeam('redbull');
+    final TeamResult? team = await api.getTeam('haas');
 
-    print(team!.teamName);
+    print(team!.drivers);
   });
 }

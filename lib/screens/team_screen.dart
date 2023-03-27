@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../models/models.dart';
 import '../providers/f1_provider.dart';
+import '../router/app_routes.dart';
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
@@ -12,6 +13,8 @@ class TeamScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     F1Provider providerTeam = Provider.of<F1Provider>(context);
+
+    final menuOptions = AppRoutes.menuOptions;
     
     final args = ModalRoute.of(context)!.settings.arguments as WidgetArguments2;
     final name = args.name.toLowerCase().replaceAll(' ', '');
@@ -22,6 +25,11 @@ class TeamScreen extends StatelessWidget {
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
         } else {
+          String driver1Name = providerTeam.currentTeam!.drivers![1]['firstname'];
+          if (driver1Name == 'Zhou')
+          {
+            driver1Name = 'Guanyu';
+          }
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.black,
@@ -69,14 +77,14 @@ class TeamScreen extends StatelessWidget {
                               Text(
                                 args.rank,
                                 style: const TextStyle(
-                                  fontFamily: 'F1R', color: Colors.white, fontSize: 20
+                                  fontFamily: 'F1B', color: Colors.white, fontSize: 20
                                 ),
                               ),
                               const SizedBox(
                                 width: 30, 
                               ),
                               Text(
-                                (providerTeam.currentTeam?.points).toString(),
+                                'Pts: ${(args.points).toString()}',
                                 style: const TextStyle(
                                   fontFamily: 'F1R', color: Colors.white, fontSize: 20
                                 ),
@@ -151,8 +159,8 @@ class TeamScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     TeamDetails(
-                                      title: 'Chassis',
-                                      datail: providerTeam.currentTeam!.chassis!
+                                      title: 'First Team Entry',
+                                      datail: providerTeam.currentTeam!.firstTeamEntry!
                                     ),
                                     TeamDetails(
                                       title: 'Power unit',
@@ -199,7 +207,7 @@ class TeamScreen extends StatelessWidget {
                                           borderRadius: BorderRadius.all(Radius.circular(20))
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
+                                          padding: const EdgeInsets.all(12.0),
                                           child: Column(
                                             children: [
                                               Image.asset('assets/${providerTeam.currentTeam!.drivers![0]['firstname']}.png'.replaceAll(' ', '')),
@@ -234,10 +242,10 @@ class TeamScreen extends StatelessWidget {
                                           borderRadius: BorderRadius.all(Radius.circular(20))
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
+                                          padding: const EdgeInsets.all(12.0),
                                           child: Column(
                                             children: [
-                                              Image.asset('assets/${providerTeam.currentTeam!.drivers![1]['firstname']}.png'.replaceAll(' ', '')),
+                                              Image.asset('assets/$driver1Name.png'.replaceAll(' ', '')),
                                               const SizedBox(
                                                 height: 20,
                                               ),
@@ -270,6 +278,47 @@ class TeamScreen extends StatelessWidget {
                         const SizedBox(
                           height: 15,
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(left:25.0, right:25.0, bottom:15.0),
+                          child: Card(
+                            color: Colors.black45,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(20))
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Card(
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(20))
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal:10, vertical:5.0),
+                                      child: Text(
+                                        'Chassis - ${providerTeam.currentTeam!.chassis!}',
+                                        style: const TextStyle(
+                                          fontFamily: 'F1B', color: Colors.black, fontSize: 15
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(20))
+                                  ),
+                                  clipBehavior: Clip.hardEdge,
+                                  color: Colors.black87,
+                                  child: Image.asset(
+                                    'assets/${name}2.jpeg', 
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -316,10 +365,17 @@ class TeamDetails extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Text(
-                    datail,
-                    style: const TextStyle(
-                      fontFamily: 'F1R', color: Colors.black
+                  Container(
+                    alignment: Alignment.center,
+                    width: 150,
+                    child: Text(
+                      datail,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontFamily: 'F1R', color: Colors.black
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   // SizedBox(

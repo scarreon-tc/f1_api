@@ -113,7 +113,7 @@ class TeamCard extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context, menuOptions[1].route,
-                  arguments: WidgetArguments2(index, '${team.teamName}', team.rank!['standing']!.toString())
+                  arguments: WidgetArguments2(index, '${team.teamName}', team.rank!['standing']!.toString(), team.points!['pts'])
                 );
               },
               child: Card(
